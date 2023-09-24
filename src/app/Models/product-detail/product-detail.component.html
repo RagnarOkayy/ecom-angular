@@ -1,0 +1,8 @@
+<div *ngIf="product">
+    <h2>Product Details</h2>
+    <p>Product ID: {{ product.id }}</p>
+    <p>Name: {{ product.name }}</p>
+    <p>Description: {{ product.description }}</p>
+    <img *ngIf="product.image" class="max-height-200" [src]="'data:image/jpeg;base64,' + product.image" alt="Product Image">
+    <!-- Display other product details here -->
+  </div>
