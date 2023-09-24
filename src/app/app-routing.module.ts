@@ -7,9 +7,10 @@ import { ProductsComponent } from './Models/products/products.component';
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  {path:'', component: LoginComponent},
   {path:'products', component: ProductsComponent},
-  {path:'products/:id', component: ProductDetailComponent} // Replace 'LoginComponent' with the actual name of your login component.
+  {path:'products/:id', component: ProductDetailComponent},
+  
 ];
 
 @NgModule({

@@ -7,13 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class LoginServiceService {
 
-  private apiUrl = "https://localhost:7282/api/User"
-
   constructor( private http: HttpClient) { }
 
-  getUsers(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
-  }
 
 }
 
