@@ -1,0 +1,27 @@
+/* Custom CSS for product-details */
+.product-details {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff; /* Set background color to white */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .product-details h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .product-details p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .product-details img {
+    max-width: 300px; /* Set maximum width for the image */
+    height: auto;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  

@@ -1,4 +1,18 @@
-.max-height-200 {
-    max-height: 200px;
-  }
-  
+
+.card-title{
+  min-height: 3rem;
+}
+
+.card .card-img-top {
+  max-height: 180px; /* Adjust the maximum height as needed */
+  width: 100%;
+  object-fit: contain;
+  padding: 10px; /* Adjust the padding as needed */
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  max-width: 100%; /* Adjust the maximum width as needed */
+}

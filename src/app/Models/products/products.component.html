@@ -1,35 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">My Bootstrap App</a>
-  <!-- Add other navbar elements here -->
-</nav>
-
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2 mr-1">
       <!-- Sidebar with checkboxes -->
       <div class="mb-4">
         <h5>Filter by Category</h5>
-        
-        <div class="form-check" *ngFor="let category of categories">
-          <input class="form-check-input" type="checkbox" [id]="category.id" (change)="filterByCategory(category.id)">
-          <label class="form-check-label" [for]="category.id">{{ category.categoryName }}</label>
+        <div class="list-group">
+          <div class="list-group-item list-group-item-action" *ngFor="let category of categories" (click)="toggleCategorySelection(category.id)">
+            <input class="form-check-input me-1" type="checkbox" name="category" [id]="category.id" 
+                   [checked]="isCategorySelected(category.id)">
+            {{ category.categoryName }}
+          </div>
         </div>
-
       </div>
     </div>
     <div class="col-md-9">
       <!-- Product list -->
-      <div class="row justify-content-center">
-        <div class="col-md-3 m-1" *ngFor="let prod of filteredCategory ? filteredProductsList : productsList">
-          <!-- Product details -->
-          <div class="d-flex flex-column justify-content-center align-items-center p-4 h-100" (click)="navigateToProductDetail(prod.id)">
-            <a [routerLink]="['/products', prod.id]"></a>
-            <div>ID: {{ prod.id }}</div>
-            <div>Name of the product: {{ prod.name }}</div>
-            <div>Description: {{ prod.description }}</div>
-            <div>Description: {{ prod.productCategoryName }}</div>
-            <img *ngIf="prod.imageData" class="max-height-200" [src]="'data:image/jpeg;base64,' + prod.imageData" alt="Product Image">
-            <!-- Add other fields here -->
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" *ngFor="let prod of filteredProductsList ? filteredProductsList : productsList">
+          <!-- Product card -->
+          <div class="card">
+            <img *ngIf="prod.imageData" src="data:image/jpeg;base64,{{ prod.imageData }}" class="card-img-top" alt="Product Image">
+            <div class="card-body">
+              <h5 class="card-title">{{ prod.name }}</h5>
+              <p class="card-text ellipsis">{{ prod.description }}</p>
+              <p class="card-text"><small class="text-muted">Category: {{ prod.productCategoryName }}</small></p>
+            </div>
+            <div class="card-footer text-center">
+              <button class="btn btn-primary" (click)="navigateToProductDetail(prod.id)">View Details</button>
+            </div>
           </div>
         </div>
       </div>

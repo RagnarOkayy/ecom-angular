@@ -39,13 +39,16 @@ export class LoginComponent implements OnInit{
   
             localStorage.clear();
             const response = this.getDecodedAccessToken(res.token);
+            const id = response.Id;
             const email = response.Email;
+            const displayName = response.DisplayName;
   
             // Store userId in local storage
             localStorage.setItem('token', res.token);
+            localStorage.setItem('id', id)
             localStorage.setItem('email', email);
+            localStorage.setItem('displayName', displayName);
             console.log(res.token);
-            console.log(email);
   
             this.loginForm.reset();
             this.router.navigate(['products']);
