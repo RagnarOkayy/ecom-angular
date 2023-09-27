@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class ProductDetailService {
 
-  private apiUrl = "https://localhost:7282/api/Product/products?id="
+  private apiUrl = "https://localhost:7282/api/"
   private orderApiUrl = "https://localhost:7282/PostOrder"
 
   constructor(private http: HttpClient) { }
 
   getProduct(productId: number): Observable<any>{
-    const url = `${this.apiUrl}${productId}`;
+    const url = `${this.apiUrl}Product/${productId}`;
     return this.http.get(url);
   }
 

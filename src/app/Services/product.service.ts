@@ -13,7 +13,7 @@ export class ProductService {
   constructor( private http: HttpClient) { }
 
   getAllProducts(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}Product/productWithCategory`);
+    return this.http.get<any[]>(`${this.apiUrl}Product`);
   }
 
   getAllProductCategories(): Observable<any[]> {
