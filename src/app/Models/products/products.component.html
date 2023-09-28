@@ -1,7 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-2 mr-1">
-      <!-- Sidebar with checkboxes -->
+    <!-- <div class="col-md-2 mr-1">
       <div class="mb-4">
         <h5>Filter by Category</h5>
         <div class="list-group">
@@ -12,18 +11,18 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="col-md-9">
       <!-- Product list -->
       <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col" *ngFor="let prod of filteredProductsList ? filteredProductsList : productsList">
+        <div class="col" *ngFor="let prod of filteredProductsList">
           <!-- Product card -->
           <div class="card">
             <img *ngIf="prod.imageData" src="data:image/jpeg;base64,{{ prod.imageData }}" class="card-img-top" alt="Product Image">
             <div class="card-body">
               <h5 class="card-title">{{ prod.name }}</h5>
               <p class="card-text ellipsis">{{ prod.description }}</p>
-              <p class="card-text"><small class="text-muted">Category: {{ prod.productCategoryName }}</small></p>
+              <p class="card-text"><small class="text-muted">Categories: {{ prod.productCategoryNames?.join(', ') }}</small></p>
             </div>
             <div class="card-footer text-center">
               <button class="btn btn-primary" (click)="navigateToProductDetail(prod.id)">View Details</button>

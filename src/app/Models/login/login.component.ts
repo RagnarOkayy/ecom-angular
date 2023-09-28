@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit{
           next: (res) => {
             // Extract userId from response
   
-            localStorage.clear();
+            //localStorage.clear(); // removed for cart 
             const response = this.getDecodedAccessToken(res.token);
             const id = response.Id;
             const email = response.Email;

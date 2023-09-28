@@ -20,5 +20,6 @@ export class ProductDetailService {
   createOrder(orderData: any): Observable<any> {
     return this.http.post(this.orderApiUrl, orderData);
   }
+  
 
 }

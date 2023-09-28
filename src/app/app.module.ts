@@ -9,7 +9,7 @@ import { ProductsComponent } from './Models/products/products.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './Utilities/navbar/navbar.component';
-
+import { CartComponent } from './Models/cart/cart.component';
 
 
 @NgModule({
@@ -18,7 +18,8 @@ import { NavbarComponent } from './Utilities/navbar/navbar.component';
     LoginComponent,
     ProductDetailComponent,
     ProductsComponent,
-    NavbarComponent
+    NavbarComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

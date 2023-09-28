@@ -1,10 +1,16 @@
-<div *ngIf="product" class="product-details">
-    <div class="container">
-      <h2>{{ product.name }}</h2>
-    <p>Description: {{ product.description }}</p>
-    <p>Quantity Avaiable: {{product.quantity}}</p>
-    <p>Product Category: {{product.productCategoryName}}</p>
-    <img *ngIf="product.imageData" src="data:image/jpeg;base64,{{ product.imageData }}"  alt="Product Image">
+  <div *ngIf="product" class="product-details">
+      <div class="container">
+        <h2>{{ product.name }}</h2>
+      <p>Description: {{ product.description }}</p>
+      <p>Quantity Avaiable: {{product.quantity}}</p>
+      <p>Price: {{product.price}}</p>
+      <div>
+        <label for="orderQuantity">Order Quantity:</label>
+        <input type="number" id="orderQuantity" [(ngModel)]="orderQuantity" [max]="product.quantity" [min]="1" />
+      </div>
+      <img *ngIf="product.imageData" src="data:image/jpeg;base64,{{ product.imageData }}"  alt="Product Image">
+      <button class="button" (click)="orderProduct()">Order</button>
+      <button class="button" (click)="addToCart()">Add to Cart</button>
+      </div>
+      <!-- Display other product details here -->
     </div>
-    <!-- Display other product details here -->
-  </div>

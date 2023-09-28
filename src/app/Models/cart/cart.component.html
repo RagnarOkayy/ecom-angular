@@ -1,0 +1,31 @@
+<div *ngFor="let product of products">
+    <div class="product">
+      <h2>{{ product.name }}</h2>
+      <p>{{ product.description }}</p>
+      <p>Price: ${{ product.price }}</p>
+      <p>Quantity Ordered: {{ product.quantity }}</p>
+      <p>Quantity: {{ product.maxQuantity }}</p>
+      <!-- Add more details you want to display -->
+  
+      <!-- You can also add an imagde using the 'imageData' property -->
+      <img *ngIf="product.imageData" src="data:image/jpeg;base64,{{ product.imageData }}"  alt="Product Image" />
+  
+      <div>
+        <span *ngIf="product.is_disc">Discounted Price: ${{ product.disc_price }}</span>
+      </div>
+  
+      <div>
+        Categories:
+        <ul>
+          <li *ngFor="let category of product.productCategoryNames">{{ category }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  
+  <div>
+    <button (click)="addAllProducts()" class="btn btn-primary">
+      Add Order
+  </button>
+  </div>
