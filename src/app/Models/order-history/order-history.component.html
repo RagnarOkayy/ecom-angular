@@ -1,1 +1,21 @@
-<p>order-history works!</p>
+<div class="order-list">
+    <div *ngFor="let order of orderHistory" class="order-item">
+      <div class="row">
+        <div class="order-details col-md-10">
+            <p class="order-id">Order ID: {{ order.id }}</p>
+            <p class="product-name">Product: {{ order.productName }}</p>
+            <p class="quantity">Quantity: {{ order.order_quantities }}</p>
+            <p class="total-value">Total Value: ${{ order.total_value }}</p>
+            <p class="total-value">Status: {{ order.orderStatusType }}</p>
+            
+          </div>
+    
+          <div class="col-md-2" *ngIf="order.orderStatusType === 'Pending'">
+            <div class="cancel-button-container">
+              <button class="cancel-button" (click)="cancellOrder(order.id)">Cancel</button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  

@@ -26,9 +26,11 @@ export class ShipmentService {
 
   changeShipment(id: number, status: number): Observable<any> {
     const url = `${this.apiUrl}${id}?status=${status}`;
-    
-
     return this.http.post(url, {});
+  }
+
+  cancellOrder(orderid: number): Observable<any>{
+    return this.http.post<any>(`${this.apiUrl}cancellOrder?orderid=${orderid}`, {})
   }
 
 }

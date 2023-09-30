@@ -22,11 +22,8 @@ export class ShipmentsListComponent implements OnInit{
       .subscribe((x) => {
         console.log(x)
       })
-
-      
       
   }
-
 
 
   pendingShipment(){
