@@ -42,13 +42,15 @@ export class LoginComponent implements OnInit{
             const id = response.Id;
             const email = response.Email;
             const displayName = response.DisplayName;
+            const role = response.role
   
             // Store userId in local storage
             localStorage.setItem('token', res.token);
             localStorage.setItem('id', id)
             localStorage.setItem('email', email);
             localStorage.setItem('displayName', displayName);
-            console.log(res.token);
+            localStorage.setItem('role', role)
+            console.log(localStorage.getItem('role'));
   
             this.loginForm.reset();
             this.router.navigate(['products']);

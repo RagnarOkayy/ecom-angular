@@ -1,0 +1,103 @@
+<div class="order-container">
+  <div class="order-header">
+    <h2>Pending Orders</h2>
+  </div>
+  <ul>
+    <li *ngFor="let order of shipmentPending" class="order-details">
+     <div class="row">
+      <div class="col-md-10">
+        Order ID: {{ order.order_id }}
+        <br>
+        Email: {{order.user_email}}
+        <br>
+        <span *ngFor="let productName of order.productName; let last = last">
+          {{ productName }}<ng-container *ngIf="!last"><br></ng-container>
+        </span>
+        <br>
+        Product Quantity: {{ order.order_quantities.join(', ') }}
+        <br>
+      </div>
+      <div class="col-md-2">
+      <button class="btn btn-primary" (click)="changeStatus(order.id, 1)">Ship Order</button> <!-- Blue ship button -->
+      <button class="btn btn-danger" (click)="changeStatus(order.id, 3)">Reject Order</button> <!-- Red reject button -->
+      </div>
+     </div>
+      
+      
+    </li>
+  </ul>
+  
+</div>
+
+<div class="order-container">
+  <div class="order-header">
+    <h2>Shipping Orders</h2>
+  </div>
+  <ul>
+    <li *ngFor="let order of shipmentShipping" class="order-details">
+      <div class="row">
+        <div class="col-md-10">
+          Order ID: {{ order.order_id }}
+      <br>
+      Email: {{order.user_email}}
+      <br>
+      <span *ngFor="let productName of order.productName; let last = last">
+        {{ productName }}<ng-container *ngIf="!last"><br></ng-container>
+      </span>
+      <br>
+      Product Quantity: {{ order.order_quantities.join(', ') }}
+        </div>
+
+        <div class="col-md-2">
+          <button class="btn btn-danger" (click)="changeStatus(order.id, 3)">Cancel</button> <!-- Red reject button -->
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="order-container">
+  <div class="order-header">
+    <h2>Shipped Orders</h2>
+  </div>
+  <ul>
+    <li *ngFor="let order of shipmentShipped" class="order-details">
+      Order ID: {{ order.order_id }}
+      <br>
+      Email: {{order.user_email}}
+      <br>
+      <span *ngFor="let productName of order.productName; let last = last">
+        {{ productName }}<ng-container *ngIf="!last"><br></ng-container>
+      </span>
+      <br>
+      Product Quantity: {{ order.order_quantities.join(', ') }}
+    </li>
+  </ul>
+</div>
+
+<div class="order-container">
+  <div class="order-header">
+    <h2>Rejected Orders</h2>
+  </div>
+  <ul>
+    <li *ngFor="let order of shipmentCancelled" class="order-details">
+      <div class="row">
+        <div class="col-md-10">
+          Order ID: {{ order.order_id }}
+      <br>
+      Email: {{order.user_email}}
+      <br>
+      <span *ngFor="let productName of order.productName; let last = last">
+        {{ productName }}<ng-container *ngIf="!last"><br></ng-container>
+      </span>
+      <br>
+      Product Quantity: {{ order.order_quantities.join(', ') }}
+        </div>
+
+        <div class="col-md-2">
+          <button class="btn btn-primary" (click)="changeStatus(order.id, 0)">Re-Approve Order</button> <!-- Red reject button -->
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

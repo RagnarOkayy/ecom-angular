@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './Utilities/navbar/navbar.component';
 import { CartComponent } from './Models/cart/cart.component';
+import { ShipmentsListComponent } from './Models/shipments-list/shipments-list.component';
+import { OrderHistoryComponent } from './Models/order-history/order-history.component';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { CartComponent } from './Models/cart/cart.component';
     ProductsComponent,
     NavbarComponent,
     CartComponent,
+    ShipmentsListComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,
