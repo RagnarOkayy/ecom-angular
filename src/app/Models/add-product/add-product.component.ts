@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormControl, FormGroup , Validators } from '@angular/forms';
+import { FormArray, FormBuilder,FormControl, FormGroup , Validators, } from '@angular/forms';
 import { AddProductService } from 'src/app/Services/add-product.service';
+import { ProductService } from 'src/app/Services/product.service';
+import { IDropdownSettings } from 'ng-multiselect-dropdown'; 
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
@@ -8,13 +11,23 @@ import { AddProductService } from 'src/app/Services/add-product.service';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss']
 })
+
+
 export class AddProductComponent {
 
   productForm!: FormGroup;
+  productCategories: any[] = []
 
-  constructor(private fb: FormBuilder, private addProductService: AddProductService) { }
+  constructor(private fb: FormBuilder, private addProductService: AddProductService, private productService: ProductService) { }
 
+
+  
   ngOnInit(): void {
+
+    this.productService.getAllProductCategories().subscribe((data) => {
+      this.productCategories = data;
+    });
+
     this.productForm = this.fb.group({
       id: [0],
       name: ['', Validators.required],
@@ -24,8 +37,9 @@ export class AddProductComponent {
       is_disc: [false],
       quantity: [0, Validators.min(0)],
       imageData: ['', Validators.required],
-      productCategoryIds: [[3,4]]
+      productCategoryIds: [[]]
     });
+    
   }
 
   onFileSelected(event: any) {
@@ -37,6 +51,7 @@ export class AddProductComponent {
             imageData: base64String
           });
           console.log(this.productForm.value);
+          console.log(this.productCategories)
         })
         .catch(error => {
           console.error('Error converting to base64:', error);
@@ -63,9 +78,9 @@ export class AddProductComponent {
       reader.readAsDataURL(file);
     });
   }
-  
 
   onSubmit() {
+    console.log(this.productForm.value.productCategoryIds)
     this.addProductService
       .postProduct(this.productForm.value)
       .subscribe((response) => {
@@ -73,4 +88,33 @@ export class AddProductComponent {
       });
   }
 
+  dropdownSettings: IDropdownSettings = {
+    singleSelection: false,
+    idField: 'id',
+    textField: 'categoryName',
+    selectAllText: 'Select All',
+    unSelectAllText: 'Unselect All',
+    itemsShowLimit: 3,
+    allowSearchFilter: true
+  };
+
+  
+
+  // onItemSelect(item: any) {
+  //   // get the current value of productCategoryIds
+  //   let productCategoryIds = this.productForm.get('productCategoryIds')?.value ?? [];
+  //   // check if the item is already selected
+  //   if (productCategoryIds.includes(item.id.toString())) {
+  //     // if yes, remove it from the array
+  //     productCategoryIds = productCategoryIds.filter((id : any) => id !== item.id.toString());
+  //   } else {
+  //     // if not, add it to the array as a string
+  //     productCategoryIds.push(item.id.toString());
+  //   }
+  //   // update the value of productCategoryIds
+  //   this.productForm.patchValue({ productCategoryIds: productCategoryIds });
+  // }
+  
+
 }
+

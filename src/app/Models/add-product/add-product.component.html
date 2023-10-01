@@ -1,25 +1,35 @@
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-    <label for="name">Name</label>
-    <input type="text" id="name" formControlName="name">
-    
-    <label for="description">Description</label>
-    <input type="text" id="description" formControlName="description">
-    
-    <label for="price">price</label>
-    <input type="number" id="price" formControlName="price">
-
-    <label for="disc_price">disc_price</label>
-    <input type="number" id="disc_price" formControlName="disc_price">
+  <label for="name">Name</label>
+  <input type="text" id="name" formControlName="name">
   
-    <label for="is_disc">Is Discount</label>
-    <input type="checkbox" id="is_disc" formControlName="is_disc">
-
-    <label for="quantity">quantity</label>
-    <input type="number" id="quantity" formControlName="quantity">
-
-    <label for="image">Image</label>
-    <input type="file" id="image" (change)="onFileSelected($event)">
-    
-    <button type="submit">Submit</button>
-  </form>
+  <label for="description">Description</label>
+  <input type="text" id="description" formControlName="description">
   
+  <label for="price">price</label>
+  <input type="number" id="price" formControlName="price">
+
+  <label for="disc_price">disc_price</label>
+  <input type="number" id="disc_price" formControlName="disc_price">
+
+  <label for="is_disc">Is Discount</label>
+  <input type="checkbox" id="is_disc" formControlName="is_disc">
+
+  <label for="quantity">quantity</label>
+  <input type="number" id="quantity" formControlName="quantity">
+
+  <label for="image">Image</label>
+  <input type="file" id="image" (change)="onFileSelected($event)">
+  
+  <div class="form-group">
+    <label for="productCategoryIds">Product Categories</label>
+    <ng-multiselect-dropdown
+      [placeholder]="'Select Product Categories'"
+      [data]="productCategories"
+      formControlName="productCategoryIds"
+      [settings]="dropdownSettings"
+    >
+    </ng-multiselect-dropdown>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
