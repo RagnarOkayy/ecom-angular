@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,EventEmitter, Input, Output } from '@angular/core';
 import { ProductService } from 'src/app/Services/product.service';
 import { Router } from '@angular/router';
 
@@ -16,16 +16,26 @@ interface Product {
   ProductCategoryNames: string[] | null;
 }
 
+interface Category {
+  id: number;
+  name: string;
+}
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
+
 export class ProductsComponent {
   productsList: any[] = [];
   filteredProductsList: any[] = [];
   selectedCategories: number[] = [];
   categories: any[] = [];
+
+  categoryChange = new EventEmitter<number[]>();
+
+  userRole = localStorage.getItem('role');
 
   constructor(private productService: ProductService, private router: Router) {
     this.productService.getAllProducts().subscribe((data) => {
@@ -41,6 +51,11 @@ export class ProductsComponent {
   navigateToProductDetail(productId: number) {
     // Construct the URL with the product ID and navigate to it
     this.router.navigate(['/products', productId]);
+  }
+
+  navigateToProductEdit(productId: number) {
+    // Construct the URL with the product ID and navigate to it
+    this.router.navigate(['/edit-product', productId]);
   }
 
 }

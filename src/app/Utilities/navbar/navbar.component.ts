@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
 
   userDisplayName: string | null = null; // Initialize with null
+  userRole = localStorage.getItem('role');
+  userId = localStorage.getItem('id');
 
   constructor(private router: Router) { }
 
@@ -21,15 +23,45 @@ export class NavbarComponent {
     }
   }
 
+  navigateToProducts() {
+    this.router.navigate(['/products']);
+  }
+
+  navigateToAddProduct() {
+    this.router.navigate(['/add-product']);
+  }
+
+  navigateToCart() {
+    this.router.navigate(['/cart']);
+  }
+
+  navigateToOrderHistory() {
+    this.router.navigate(['/order-history']);
+  }
+
+  navigateToProfile() {
+    this.router.navigate([`userList/${this.userId}`]);
+  }
+
+  navigateToUserList() {
+    this.router.navigate([`userList`]);
+  }
+
+  navigateToShipments() {
+    this.router.navigate([`shipments`]);
+  }
+
+
   logout(): void {
     // Clear values from local storage
     localStorage.removeItem('token');
     localStorage.removeItem('email');
     localStorage.removeItem('displayName');
     localStorage.removeItem('id')
+    localStorage.removeItem('role')
 
     // Redirect to the main page
-    this.router.navigate(['/']); // Adjust the route to your main page
+    this.router.navigate(['/']);
   }
 
 }

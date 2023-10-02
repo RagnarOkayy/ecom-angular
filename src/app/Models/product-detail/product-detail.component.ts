@@ -12,6 +12,7 @@ export class ProductDetailComponent implements OnInit {
 
     product: any = {};
     imageBase64: string | undefined;
+    userRole = localStorage.getItem('role')
 
     constructor(
       private route: ActivatedRoute,
@@ -56,7 +57,7 @@ export class ProductDetailComponent implements OnInit {
 
       order_dict.productId.push(this.product.id)
       order_dict.productQuantity.push(this.orderQuantity)
-
+      alert("Product Added")
       localStorage.setItem(`cart${this.userId}`, JSON.stringify(order_dict));
 
     }

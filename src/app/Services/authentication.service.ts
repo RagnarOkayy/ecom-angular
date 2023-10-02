@@ -17,6 +17,12 @@ export class AuthenticationService {
 
   }
 
+  register(registerObj: any){
+    
+    return this.http.post<any>(`${this.apiUrl}register`, registerObj)
+
+  }
+
   isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
     return !!token;

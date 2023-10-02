@@ -1,0 +1,41 @@
+<label for="name">Name</label>
+<input [(ngModel)]="product.name" type="text" id="name" >
+
+<label for="description">Description</label>
+<input [(ngModel)]="product.description" type="text" id="description" >
+
+<label for="price">price</label>
+<input [(ngModel)]="product.price" type="number" id="price" >
+
+<label for="disc_price">disc_price</label>
+<input [(ngModel)]="product.disc_price" type="number" id="disc_price" >
+
+<label for="is_disc">Is Discount</label>
+<input [(ngModel)]="product.is_disc" type="checkbox" id="is_disc" >
+
+<label for="quantity">quantity</label>
+<input [(ngModel)]="product.quantity" type="number" id="quantity">
+
+<label for="imageData">Image</label>
+<input [(ngModel)]="product.imageData"  type="file" id="imageData" (change)="onFileSelected($event)">
+<img
+        [(ngModel)]="product.imageData"
+        src="data:image/jpeg;base64,{{ product.imageData }}"
+        alt="Product Image"
+        type="file"
+        id="imageData"
+        (change)="onFileSelected($event)"
+        class="img-fluid rounded"
+      />
+<div class="form-group">
+  <label for="productCategoryIds">Product Categories</label>
+  <ng-multiselect-dropdown
+    [placeholder]="'Select Product Categories'"
+    [data]="productCategories"
+    [(ngModel)]="selectedProductCategories"
+    [settings]="dropdownSettings"
+  >
+  </ng-multiselect-dropdown>
+</div>
+
+<button type="submit" (click)="onSubmit()">Submit</button>

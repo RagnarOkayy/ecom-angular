@@ -12,6 +12,14 @@ import { NavbarComponent } from './Utilities/navbar/navbar.component';
 import { CartComponent } from './Models/cart/cart.component';
 import { ShipmentsListComponent } from './Models/shipments-list/shipments-list.component';
 import { OrderHistoryComponent } from './Models/order-history/order-history.component';
+import { AddProductComponent } from './Models/add-product/add-product.component';
+import { RegisterComponent } from './Models/register/register.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { EditProductComponent } from './Models/edit-product/edit-product.component';
+import { UserListComponent } from './Models/user-list/user-list.component';
+import { UserIndividualComponent } from './Models/user-individual/user-individual.component';
+import { UserShipmentsComponent } from './Models/user-shipments/user-shipments.component';
+
 
 
 @NgModule({
@@ -23,14 +31,21 @@ import { OrderHistoryComponent } from './Models/order-history/order-history.comp
     NavbarComponent,
     CartComponent,
     ShipmentsListComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    AddProductComponent,
+    RegisterComponent,
+    EditProductComponent,
+    UserListComponent,
+    UserIndividualComponent,
+    UserShipmentsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

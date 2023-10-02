@@ -1,0 +1,27 @@
+  /* Style for the container div */
+  .order-container {
+    width: 80%; /* Set the desired width */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add some spacing */
+    border: 1px solid #ccc; /* Add a border for separation */
+    margin-bottom: 20px; /* Add spacing between cards */
+    border-radius: 10px; /* Add rounded corners */
+  }
+
+  /* Style for the order header */
+  .order-header {
+    background-color: #007bff; /* Primary color for the header */
+    color: #fff; /* Text color for the header */
+    padding: 10px; /* Add padding to the header */
+    border-top-left-radius: 10px; /* Round the top-left corner of the header */
+    border-top-right-radius: 10px; /* Round the top-right corner of the header */
+  }
+
+  /* Style for the order details */
+  .order-details {
+    padding: 10px; /* Add padding to the details section */
+    border-bottom-left-radius: 10px; /* Round the bottom-left corner of the details */
+    border-bottom-right-radius: 10px; /* Round the bottom-right corner of the details */
+  }
+
+

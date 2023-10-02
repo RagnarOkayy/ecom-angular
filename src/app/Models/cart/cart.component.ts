@@ -45,7 +45,7 @@ export class CartComponent{
   addAllProducts(){
 
     this.order.productId = []
-    this.order.order_quanities = []
+
 
     this.products.forEach((product) => {
         this.order.productId.push(product.id);
@@ -67,6 +67,8 @@ export class CartComponent{
             alert("The order couldnt be completed")
           }
           );
+
+          this.router.navigate(['/products']);
 
   }
 

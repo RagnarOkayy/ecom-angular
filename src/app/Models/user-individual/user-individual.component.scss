@@ -1,0 +1,31 @@
+/* Custom CSS for form styling */
+.form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-left: 50px;
+  }
+
+  input {
+    max-width: 30%;
+  }
+  
+  .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    transition: border-color 0.2s;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Make the ID field read-only */
+  #id, #role{
+    background-color: #D3D3D3;
+  }
+  

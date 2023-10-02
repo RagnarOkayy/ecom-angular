@@ -1,37 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder,FormControl, FormGroup , Validators, } from '@angular/forms';
-import { AddProductService } from 'src/app/Services/add-product.service';
+import { ActivatedRoute } from '@angular/router';
+import { ProductDetailService } from 'src/app/Services/product-detail.service';
 import { ProductService } from 'src/app/Services/product.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown'; 
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { AddProductService } from 'src/app/Services/add-product.service';
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss']
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.component.html',
+  styleUrls: ['./edit-product.component.scss']
 })
+export class EditProductComponent implements OnInit{
 
-
-export class AddProductComponent implements OnInit {
-
+  productId: any;
   product = new Product()
 
   productCategories: any[] = [];
   selectedProductCategories: any[] = [];
- 
 
-  constructor(private fb: FormBuilder, private addProductService: AddProductService, private productService: ProductService) { }
+  constructor(private productDetailService : ProductDetailService,private editProductService : AddProductService, private productService : ProductService, private route: ActivatedRoute){
 
-  
-  
+  }
+
   ngOnInit(): void {
 
+    this.route.params.subscribe((params) => {
+      const productId = +params['id'];
+      this.productDetailService.getProduct(productId).subscribe((data) => {
+        this.product = data;
+      });
+    });
+  
     this.productService.getAllProductCategories().subscribe((data) => {
       this.productCategories = data;
     });
-    
   }
+
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -66,18 +70,6 @@ export class AddProductComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    // Get the IDs from selectedProductCategories and store them in productCategoryIds
-    this.product.productCategoryIds = this.selectedProductCategories.map(category => category.id);
-    
-    this.addProductService.postProduct(this.product).subscribe((x) => {
-      console.log(x)
-    })
-    // Now you have the selected IDs in productCategoryIds
-    console.log(this.product.productCategoryIds);
-    console.log(this.product.imageData);
-  }
-
   dropdownSettings: IDropdownSettings = {
     singleSelection: false,
     idField: 'id',
@@ -87,6 +79,18 @@ export class AddProductComponent implements OnInit {
     itemsShowLimit: 3,
     allowSearchFilter: true
   };  
+
+  onSubmit() {
+    // Get the IDs from selectedProductCategories and store them in productCategoryIds
+    this.product.productCategoryIds = this.selectedProductCategories.map(category => category.id);
+    
+    this.editProductService.postProduct(this.product).subscribe((x) => {
+      console.log(x)
+    })
+    // Now you have the selected IDs in productCategoryIds
+    console.log(this.product.productCategoryIds);
+    console.log(this.product.imageData);
+  }
 
 }
 

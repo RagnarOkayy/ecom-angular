@@ -6,12 +6,12 @@
         <p>Description: {{ product.description }}</p>
         <p>Quantity Available: {{ product.quantity }}</p>
         <p>Price: ${{ product.price }}</p>
-        <div class="form-group">
+        <div class="form-group" *ngIf="userRole == 'user'"> <!--Input doesnt display for admin-->
           <label for="orderQuantity">Order Quantity:</label>
           <input type="number" id="orderQuantity" [(ngModel)]="orderQuantity" [max]="product.quantity" [min]="1" class="form-control">
         </div>
         <!--<button class="btn btn-primary" (click)="orderProduct()">Order</button>-->
-        <button class="btn btn-success" (click)="addToCart()">Add to Cart</button>
+        <button class="btn btn-success" (click)="addToCart()" *ngIf="userRole == 'user'">Add to Cart</button>
       </div>
       <div class="col-md-6">
         <img *ngIf="product.imageData" src="data:image/jpeg;base64,{{ product.imageData }}" alt="Product Image" class="img-fluid">

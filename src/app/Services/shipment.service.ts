@@ -32,5 +32,9 @@ export class ShipmentService {
   cancellOrder(orderid: number): Observable<any>{
     return this.http.post<any>(`${this.apiUrl}cancellOrder?orderid=${orderid}`, {})
   }
+  //https://localhost:7282/api/Shipment/getByUser?userId=1&shipmentStatusNum=0
+  getShipmentByUser(userId: number, status: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}getByUser?userId=${userId}&shipmentStatusNum=${status}`)
+  }
 
 }
