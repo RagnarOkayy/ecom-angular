@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route } from '@angular/router';
 import { ProductDetailService } from 'src/app/Services/product-detail.service';
 import { ProductService } from 'src/app/Services/product.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown'; 

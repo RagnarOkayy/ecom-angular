@@ -22,7 +22,7 @@
           <div class="card">
             <img *ngIf="prod.imageData" src="data:image/jpeg;base64,{{ prod.imageData }}" class="card-img-top" alt="Product Image">
             <div class="card-body">
-              <h5 class="card-title">{{ prod.name }}</h5>
+              <h5 class="card-title" style="min-height: 2rem;">{{ prod.name }}</h5>
               <h4 class="cart-title">${{ prod.price }}</h4>
               <p class="card-text ellipsis">{{ prod.description }}</p>
               <p class="card-text"><small class="text-muted">Categories: {{ prod.productCategoryNames?.join(', ') }}</small></p>

@@ -11,7 +11,7 @@
 }
 
 .ellipsis {
-  overflow: hidden;
+  overflow:hidden;
   white-space: nowrap; /* Prevent text from wrapping */
   text-overflow: ellipsis; /* Add ellipsis for overflow text */
   max-width: 100%; /* Adjust the maximum width as needed */

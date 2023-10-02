@@ -4,6 +4,7 @@ import { AddProductService } from 'src/app/Services/add-product.service';
 import { ProductService } from 'src/app/Services/product.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({

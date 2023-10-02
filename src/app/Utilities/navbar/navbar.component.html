@@ -1,11 +1,11 @@
 <nav *ngIf="userRole == 'admin' || userRole =='user'" class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <span class="navbar-brand">Welcome, {{ userDisplayName }}</span>
+    <span class="navbar-brand" style="margin-left: 1rem;">Welcome, {{ userDisplayName }}</span>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="navbarNav" style="display: flex; justify-content: space-between;">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" (click)="navigateToProducts()">Products</a>
@@ -28,10 +28,10 @@
         <li class="nav-item" *ngIf="userRole == 'user'">
           <a class="nav-link" (click)="navigateToProfile()">Profile</a>
         </li>
-        <li class="nav-item">
-          <button class="btn btn-danger" (click)="logout()">Logout</button>
-        </li>
       </ul>
+      <div class="nav-item" style="margin-right: 2rem;">
+        <button class="btn btn-danger"(click)="logout()">Logout</button>
+    </div>
     </div>
   </div>
 </nav>
