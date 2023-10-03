@@ -72,6 +72,11 @@ export class CartComponent{
 
   }
 
+  deleteCart () {
+    localStorage.removeItem (`cart${this.userId}`);
+    this.router.navigate(['/products'])
+  }
+
 
   ngOnInit(): void {
     this.order_dict = this.getDict();
@@ -90,7 +95,7 @@ export class CartComponent{
       this.productDetailService.getProduct(IdValues[i]).subscribe(
         (data) => {
           data.quantity = quantityValues[i] // Quantity gets 
-          this.products.push(data); // Assuming your API returns the product data
+          this.products.push(data); 
           console.log(this.products);
         },
         (error) => {
@@ -119,8 +124,5 @@ export class CartComponent{
 
   }
   }
-
-  
-      
 
 }

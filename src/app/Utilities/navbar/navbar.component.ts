@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/Services/shared.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-navbar',
@@ -11,16 +14,27 @@ export class NavbarComponent {
   userDisplayName: string | null = null; // Initialize with null
   userRole = localStorage.getItem('role');
   userId = localStorage.getItem('id');
+  
+  refreshSubscription!: Subscription;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private sharedService: SharedService) { }
 
+  
   ngOnInit(): void {
-    // Retrieve the user's email from local storage
-    const displayName = localStorage.getItem('displayName');
 
-    if (displayName) {
-      this.userDisplayName = displayName;
-    }
+    this.refreshSubscription = this.sharedService.refreshNavbar$.subscribe(() => {
+      this.userRole = localStorage.getItem('role');
+      this.userId = localStorage.getItem('id');
+      const displayName = localStorage.getItem('displayName');
+
+      if (displayName) {
+        this.userDisplayName = displayName;
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.refreshSubscription.unsubscribe();
   }
 
   navigateToProducts() {
@@ -59,6 +73,8 @@ export class NavbarComponent {
     localStorage.removeItem('displayName');
     localStorage.removeItem('id')
     localStorage.removeItem('role')
+
+    this.sharedService.triggerNavbarRefresh();
 
     // Redirect to the main page
     this.router.navigate(['/']);

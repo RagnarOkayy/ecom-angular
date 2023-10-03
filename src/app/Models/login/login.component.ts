@@ -4,6 +4,7 @@ import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { Router } from '@angular/router';
 import ValidateForm from 'src/app/Helpers/validateform';
 import jwt_decode from 'jwt-decode';
+import { SharedService } from 'src/app/Services/shared.service';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit{
     private fb : FormBuilder,
     private auth : AuthenticationService,
     private router : Router,
+    private sharedService: SharedService
     ) { }
 
     ngOnInit(): void {
@@ -51,7 +53,7 @@ export class LoginComponent implements OnInit{
             localStorage.setItem('displayName', displayName);
             localStorage.setItem('role', role)
             console.log(localStorage.getItem('role'));
-  
+            this.sharedService.triggerNavbarRefresh();
             this.loginForm.reset();
             this.router.navigate(['products']);
           },

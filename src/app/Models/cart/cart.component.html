@@ -1,4 +1,7 @@
 <!-- Add Bootstrap classes for styling -->
+
+<h1 *ngIf="products.length == 0">Your cart is empty</h1>
+
 <div class="container">
   <div class="row">
     <!-- Loop through each product -->
@@ -39,9 +42,13 @@
   <!-- Add Order Button -->
   <div class="row">
     <div class="col-md-12">
-      <button (click)="addAllProducts()" class="btn btn-primary">
+      <button *ngIf="products.length > 0" (click)="addAllProducts()" class="btn btn-primary">
         Add Order
+      </button>
+      <button *ngIf="products.length > 0" type="button" class="btn btn-danger" (click)="deleteCart ()">
+        <i class="fas fa-trash-alt"></i> Delete Cart
       </button>
     </div>
   </div>
+  
 </div>
